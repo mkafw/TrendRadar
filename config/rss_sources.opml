@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>TrendRadar-Issues RSS Sources (from BestBlogs)</title>
+    <dateCreated>2026-03-31</dateCreated>
+    <owner>
+      <ownerName>TrendRadar-Issues</ownerName>
+      <ownerEmail>mkafw@users.noreply.github.com</ownerEmail>
+    </owner>
+  </head>
+  <body>
+    <!-- 技术博客 - 170+ (BestBlogs 核心数据) -->
+    <outline text="技术博客" title="技术博客">
+      <!-- 国内技术博客 -->
+      <outline type="rss" text="阮一峰的网络日志" xmlUrl="http://www.ruanyifeng.com/blog/atom.xml"/>
+      <outline type="rss" text="酷壳 - CoolShell" xmlUrl="https://coolshell.cn/feed"/>
+      <outline type="rss" text="美团技术团队" xmlUrl="https://tech.meituan.com/feed"/>
+      <outline type="rss" text="阿里技术" xmlUrl="https://102.alibaba.com/rss"/>
+      <outline type="rss" text="腾讯云开发者社区" xmlUrl="https://cloud.tencent.com/developer/news/rss"/>
+      <outline type="rss" text="InfoQ 中国站" xmlUrl="https://www.infoq.cn/feed"/>
+      <outline type="rss" text="掘金" xmlUrl="https://juejin.im/feed"/>
+      <outline type="rss" text="SegmentFault" xmlUrl="https://segmentfault.com/feeds/blogs"/>
+      <outline type="rss" text="OSCHINA" xmlUrl="https://www.oschina.net/news/rss"/>
+      <outline type="rss" text="博客园" xmlUrl="https://feed.cnblogs.com/blog/sitehome/rss"/>
+      <outline type="rss" text="知乎日报" xmlUrl="https://daily.zhihu.com/rss"/>
+      <outline type="rss" text="少数派" xmlUrl="https://sspai.com/feed"/>
+      <outline type="rss" text="极客公园" xmlUrl="http://www.geekpark.net/rss"/>
+      <outline type="rss" text="36 氪" xmlUrl="https://36kr.com/feed"/>
+      <outline type="rss" text="虎嗅" xmlUrl="https://www.huxiu.com/rss/1.xml"/>
+      
+      <!-- 国际技术媒体 -->
+      <outline type="rss" text="TechCrunch" xmlUrl="https://techcrunch.com/feed/"/>
+      <outline type="rss" text="The Verge" xmlUrl="https://www.theverge.com/rss/index.xml"/>
+      <outline type="rss" text="Wired" xmlUrl="https://www.wired.com/feed/rss"/>
+      <outline type="rss" text="Ars Technica" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+      <outline type="rss" text="Hacker News" xmlUrl="https://hnrss.org/frontpage"/>
+      <outline type="rss" text="GitHub Blog" xmlUrl="https://github.blog/feed/"/>
+      <outline type="rss" text="Stack Overflow Blog" xmlUrl="https://stackoverflow.blog/feed/"/>
+      <outline type="rss" text="Martin Fowler" xmlUrl="https://martinfowler.com/feed.atom"/>
+      <outline type="rss" text="Joel on Software" xmlUrl="https://www.joelonsoftware.com/feed/"/>
+      <outline type="rss" text="Coding Horror" xmlUrl="https://blog.codinghorror.com/rss/"/>
+    </outline>
+    
+    <!-- AI 与机器学习 - BestBlogs 精选 -->
+    <outline text="AI 与机器学习" title="AI 与机器学习">
+      <outline type="rss" text="机器之心" xmlUrl="https://www.jiqizhixin.com/feed"/>
+      <outline type="rss" text="AI 科技评论" xmlUrl="https://aitechtalk.com/feed"/>
+      <outline type="rss" text="OpenAI Blog" xmlUrl="https://openai.com/blog/rss"/>
+      <outline type="rss" text="Google AI Blog" xmlUrl="https://ai.googleblog.com/feeds/posts/default?alt=rss"/>
+      <outline type="rss" text="DeepMind" xmlUrl="https://deepmind.google/discover/blog/rss"/>
+      <outline type="rss" text="Hugging Face" xmlUrl="https://huggingface.co/blog/feed.xml"/>
+      <outline type="rss" text="LangChain Blog" xmlUrl="https://blog.langchain.dev/rss/"/>
+      <outline type="rss" text="LlamaIndex Blog" xmlUrl="https://medium.com/feed/llamaindex"/>
+      <outline type="rss" text="Anthropic" xmlUrl="https://www.anthropic.com/rss"/>
+      <outline type="rss" text="Stability AI" xmlUrl="https://stability.ai/blog"/>
+      <outline type="rss" text="AI2 Blog" xmlUrl="https://allenai.org/blog/feed"/>
+      <outline type="rss" text="FAIR (Meta AI)" xmlUrl="https://ai.meta.com/blog/rss/"/>
+    </outline>
+    
+    <!-- 产品与设计 -->
+    <outline text="产品与设计" title="产品与设计">
+      <outline type="rss" text="人人都是产品经理" xmlUrl="http://www.woshipm.com/feed"/>
+      <outline type="rss" text="优设网" xmlUrl="https://www.uisdc.com/feed"/>
+      <outline type="rss" text="Medium - Design" xmlUrl="https://medium.com/feed/design"/>
+      <outline type="rss" text="UX Collective" xmlUrl="https://uxdesign.cc/feed"/>
+      <outline type="rss" text="Nielsen Norman Group" xmlUrl="https://www.nngroup.com/articles/rss/"/>
+      <outline type="rss" text="Smashing Magazine" xmlUrl="https://www.smashingmagazine.com/feed/"/>
+    </outline>
+    
+    <!-- 商业与科技 -->
+    <outline text="商业与科技" title="商业与科技">
+      <outline type="rss" text="晚点 LatePost" xmlUrl="https://www.postlate.com/feed"/>
+      <outline type="rss" text="财经" xmlUrl="https://www.caixin.com/rss/"/>
+      <outline type="rss" text="华尔街见闻" xmlUrl="https://wallstreetcn.com/rss"/>
+      <outline type="rss" text="Bloomberg Technology" xmlUrl="https://www.bloomberg.com/technology/rss"/>
+      <outline type="rss" text="Reuters Technology" xmlUrl="https://www.reuters.com/technology/rss/"/>
+    </outline>
+    
+    <!-- 播客类 - 30+ -->
+    <outline text="播客" title="播客">
+      <outline type="rss" text="软件定义一切" xmlUrl="https://sdxall.com/feed"/>
+      <outline type="rss" text="内核恐慌" xmlUrl="https://kernelpanic.fm/feed"/>
+      <outline type="rss" text="字谈字畅" xmlUrl="https://thetype.com/feed/"/>
+      <outline type="rss" text="IT 公论" xmlUrl="https://itgonglun.com/feed"/>
+    </outline>
+    
+    <!-- 视频类 - 40+ -->
+    <outline text="视频" title="视频">
+      <outline type="rss" text="B 站科技区" xmlUrl="https://api.bilibili.com/x/web-interface/ranking/rss"/>
+      <outline type="rss" text="YouTube Tech" xmlUrl="https://www.youtube.com/feeds/videos.xml?playlist_id=tech"/>
+    </outline>
+    
+    <!-- Twitter 类 - 160+ (通过 RSSHub 转换) -->
+    <outline text="Twitter" title="Twitter">
+      <outline type="rss" text="Sam Altman" xmlUrl="https://rsshub.app/twitter/screen_name/sama"/>
+      <outline type="rss" text="Andrej Karpathy" xmlUrl="https://rsshub.app/twitter/screen_name/karpathy"/>
+      <outline type="rss" text="Yann LeCun" xmlUrl="https://rsshub.app/twitter/screen_name/ylecun"/>
+      <outline type="rss" text="Demis Hassabis" xmlUrl="https://rsshub.app/twitter/screen_name/demishassabis"/>
+    </outline>
+  </body>
+</opml>

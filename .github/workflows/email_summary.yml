@@ -1,0 +1,58 @@
+name: Send Daily Email Summary
+
+on:
+  schedule:
+    # 每天 12 点 UTC（北京时间 20 点）发送汇总邮件
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+    inputs:
+      period:
+        description: '汇总周期'
+        required: true
+        default: 'daily'
+        type: choice
+        options:
+          - daily
+          - weekly
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  email-summary:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Send email summary
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          
+          PERIOD: ${{ github.event.inputs.period || 'daily' }}
+        run: |
+          python scripts/email_summary.py
+          
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: email-logs
+          path: logs/
+          retention-days: 3

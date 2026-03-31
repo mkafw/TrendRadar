@@ -1,0 +1,157 @@
+# TrendRadar-Issues 主配置文件
+# 基于 TrendRadar v4.0.0 扩展
+
+# ======================
+# AI 分析配置
+# ======================
+ai:
+  enabled: true                    # 是否启用 AI 分析
+  provider: "openai"               # AI 服务商：openai / deepseek / moonshot
+  model: "gpt-4o-mini"             # 模型名称
+  base_url: ""                     # 自定义 API 端点（可选）
+  min_score: 60                    # 最低分数阈值，低于此分不创建 Issue
+  max_tokens: 2000                 # 最大输出 token 数
+  timeout: 30                      # API 超时时间（秒）
+
+# ======================
+# 过滤配置
+# ======================
+filter:
+  keep_days: 7                     # Issue 保留天数，超过自动关闭
+  duplicate_check: true            # 是否启用重复检测
+  duplicate_window_hours: 24       # 重复检测时间窗口（小时）
+  min_title_length: 10             # 标题最小长度
+  max_title_length: 200            # 标题最大长度
+  
+  # 内容质量过滤
+  quality:
+    min_score: 60                  # 最低 AI 评分
+    block_keywords:                # 屏蔽关键词
+      - "广告"
+      - "推广"
+      - "赞助"
+      - "营销"
+      - "震惊"
+      - "标题党"
+
+# ======================
+# RSS 配置（新增）
+# ======================
+rss:
+  enabled: true
+  opml_file: "config/rss_sources.opml"
+  max_articles_per_run: 50         # 每次运行最多处理文章数
+  fetch_full_content: true         # 是否抓取全文
+  user_agent: "TrendRadar-Issues/1.0 (RSS Aggregator)"
+
+# ======================
+# 热搜配置（保留 TrendRadar 原有）
+# ======================
+hotspots:
+  enabled: true
+  platforms:                       # 监控平台
+    - id: "zhihu"
+      name: "知乎"
+    - id: "weibo"
+      name: "微博"
+    - id: "douyin"
+      name: "抖音"
+    - id: "baidu"
+      name: "百度热搜"
+    - id: "toutiao"
+      name: "今日头条"
+    - id: "wallstreetcn-hot"
+      name: "华尔街见闻"
+    - id: "36kr"
+      name: "36 氪"
+    - id: "huxiu"
+      name: "虎嗅"
+    - id: "bilibili-hot"
+      name: "B 站热搜"
+    - id: "tieba"
+      name: "贴吧"
+    - id: "pengpai"
+      name: "澎湃新闻"
+  max_items_per_platform: 20       # 每平台最多抓取条数
+
+# ======================
+# GitHub Issues 配置（新增）
+# ======================
+github:
+  auto_create_issues: true         # 是否自动创建 Issues
+  auto_close_label: "auto-close"   # 自动关闭的 Issue 标签
+  batch_size: 10                   # 批量操作数量
+  
+  # Label 配置
+  labels:
+    - name: "rss-article"
+      color: "1D76DB"
+      description: "RSS 技术文章"
+    - name: "hotspot"
+      color: "D93F0B"
+      description: "平台热搜"
+    - name: "ai-score-90+"
+      color: "0E8A16"
+      description: "AI 评分 90 分以上"
+    - name: "ai-score-80+"
+      color: "53B358"
+      description: "AI 评分 80-89 分"
+    - name: "ai-score-70+"
+      color: "AED581"
+      description: "AI 评分 70-79 分"
+    - name: "featured"
+      color: "FFD700"
+      description: "精选内容"
+
+# ======================
+# 邮件配置（扩展 TrendRadar）
+# ======================
+email:
+  enabled: true
+  smtp_server: ""                  # 留空则自动识别
+  smtp_port: 0                     # 0 则自动识别
+  use_ssl: true                    # 是否使用 SSL
+  subject_prefix: "[TrendRadar]"   # 邮件主题前缀
+  
+  # 推送模式
+  summary:
+    daily_enabled: true            # 每日汇总
+    weekly_enabled: false          # 每周汇总
+    daily_time: "20:00"            # 每日发送时间（北京时间）
+    weekly_day: "monday"           # 每周发送星期几
+    
+  # 邮件内容配置
+  content:
+    max_items: 20                  # 每封邮件最多包含条数
+    include_summary: true          # 包含 AI 摘要
+    include_score: true            # 显示 AI 评分
+    group_by_source: true          # 按来源分组
+
+# ======================
+# 定时任务配置
+# ======================
+schedule:
+  timezone: "Asia/Shanghai"
+  
+  # Cron 表达式（GitHub Actions 使用 UTC 时间，需 -8 小时）
+  rss_fetch: "0 */2 * * *"         # 每 2 小时抓取 RSS（UTC）
+  hotspots_fetch: "30 * * * *"     # 每小时 30 分抓取热搜
+  cleanup: "0 2 * * *"             # 每天 2 点清理过期 Issue（UTC 10 点北京）
+  email_summary: "0 12 * * *"      # 每天 20 点发送汇总（UTC 12 点北京）
+
+# ======================
+# 日志配置
+# ======================
+logging:
+  level: "INFO"                    # DEBUG / INFO / WARNING / ERROR
+  save_to_file: true
+  max_log_days: 7
+
+# ======================
+# 其他配置
+# ======================
+misc:
+  user_agent: "TrendRadar-Issues/1.0"
+  request_timeout: 30
+  retry_times: 3
+  dry_run: false                   # 测试模式：不实际创建 Issues/发送邮件

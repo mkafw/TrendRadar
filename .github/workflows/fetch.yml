@@ -1,0 +1,70 @@
+name: Fetch and Process Content
+
+on:
+  schedule:
+    # RSS 抓取：每 2 小时（UTC 时间）
+    - cron: '0 */2 * * *'
+    # 热搜抓取：每小时 30 分
+    - cron: '30 * * * *'
+  workflow_dispatch:
+    inputs:
+      source:
+        description: '数据源类型'
+        required: true
+        default: 'both'
+        type: choice
+        options:
+          - both
+          - rss
+          - hotspots
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  fetch-and-process:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Run fetcher
+        env:
+          # GitHub
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          
+          # Email
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          
+          # AI
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
+          
+          # Configuration
+          SOURCE_TYPE: ${{ github.event.inputs.source || 'both' }}
+        run: |
+          python scripts/main.py
+          
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs-and-reports
+          path: |
+            logs/
+            output/
+          retention-days: 7
